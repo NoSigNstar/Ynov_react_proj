@@ -1,8 +1,5 @@
 const express = require('express');
-const path = require('path');
-const http = require('http');
 const OSRM = require('../wrappers/OSRM');
-const serverConf = require('../../config/server');
 
 /** **********************************
  *      Routes Two Points

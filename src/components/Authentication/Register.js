@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Button, Form, Container, Header, Segment, Image, Grid } from 'semantic-ui-react';
-import XHR from '../../helpers/XHRClient';
 import { store } from '../../store';
 import PropTypes from 'prop-types';
 import { createUser } from '../../actions/userActions';

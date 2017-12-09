@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../stylesheets/main.scss';
 import Header from './layouts/GlobalHeader';
 import Footer from './layouts/GlobalFooter';
-import { store } from '../store';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 

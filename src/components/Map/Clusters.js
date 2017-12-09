@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ReactMapboxGl, { Marker, Cluster, Popup } from 'react-mapbox-gl';
 import { Icon, Button } from 'semantic-ui-react';
 import { randomBytes } from 'crypto';
-import XHR from '../../helpers/XHRClient';
 import PopupContent from './PopupContent';
 import NominatimeWrapper from './NominatimeWrapper';
 import PropTypes from 'prop-types';
