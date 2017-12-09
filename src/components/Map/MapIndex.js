@@ -13,6 +13,7 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import mbUtils from 'mapbox-gl';
 import SideBar from './SideBar';
+import Geocoder from './Geocoder';
 
 class MapIndex extends Component {
   constructor(props) {
@@ -35,6 +36,10 @@ class MapIndex extends Component {
     });
   }
 
+  _handleSelect(value) {
+    console.log(value);
+  }
+
   render() {
     return (
       <this.Map
@@ -45,19 +50,26 @@ class MapIndex extends Component {
           height: '91%',
           width: '100%'
         }}>
+
+        {/* GEOCODER */}
+        <Geocoder
+          accessToken={process.env.MapboxKey}
+          onSelect={this._handleSelect}
+          showLoader={true}
+        />
+
+        {/* Sidebar used to store Selected Destinations */}
         <SideBar destinations={this.props.destinations} />
+
+        {/* Clusters of destination, contains all markers */}
         <Clusters bounds={this.state.mapBounds} />
+
+        {/* Geojson Routes, contains all the path between destinations */}
         {this.props.geoRoutes.routes && (
           <GeoJSONLayer
             data={this.props.geoRoutes.routes[0].geometry}
-            linePaint={{
-              'line-color': '#F51332',
-              'line-width': 4
-            }}
-            lineLayout={{
-              'line-join': 'round',
-              'line-cap': 'round'
-            }}
+            linePaint={{ 'line-color': '#F51332', 'line-width': 4 }}
+            lineLayout={{ 'line-join': 'round', 'line-cap': 'round' }}
             type='lineLayout'/>
         )}
       </this.Map>

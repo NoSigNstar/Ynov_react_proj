@@ -36,8 +36,8 @@ module.exports = {
         loaders: ['babel-loader'],
       },
       {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
+        test: /\.(jsx|js)?$/,
+        exclude: /node_modules\/(?!mapbox-gl\/js)/,
         loader: ['react-hot-loader', 'babel-loader']
       },
       {
