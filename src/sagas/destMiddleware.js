@@ -9,6 +9,11 @@ function cloneDests() {
   return _.cloneDeep(store.getState().destination);
 }
 
+/**
+ * Return a query formated for
+ * @param {*Number of iteration} size
+ * @param {*Collection on wich we wanna itarate} collection
+ */
 function getLatLonQueryString(size, collection) {
   let query = '';
   for (let i = 0; i < size; i++) {
@@ -29,7 +34,7 @@ function getLatLonQueryString(size, collection) {
  */
 export function *fetchRoute(action) {
   const dests = cloneDests();
-  let query = getLatLonQueryString(2, dests);
+  let query = getLatLonQueryString(dests.length, dests);
   const route = yield call(XHR.get, process.env.computeRouteUrl + '?coordinates=' + query, {});
   if (!route || route.error) {
     throw new Error('response not handled', route);

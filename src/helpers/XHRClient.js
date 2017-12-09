@@ -1,4 +1,5 @@
 // import API from 'whatwg-fetch';
+import xhr from 'xhr';
 
 class Client {
   _formatQuery(type = 'GET', params) {
@@ -49,6 +50,15 @@ class Client {
       return json;
     }).catch((error) => {
       return { error: error };
+    });
+  }
+
+  search(endpoint, source, accessToken, proximity, query, callback) {
+    const searchTime = new Date();
+    const url = endpoint + '/geocoding/v5/' + source + '/' + encodeURIComponent(query) + '.json' + '?access_token=' + accessToken + (proximity ? '&proximity=' + proximity : '');
+
+    xhr({ uri: url, json: true }, function (err, res, body) {
+      callback(err, res, body, searchTime);
     });
   }
 }
