@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { Button, Form, Card, Grid, Icon, Header, Image } from 'semantic-ui-react';
+import {store} from '../../store';
 
 const extra = (
   <a>
     <Icon name='mail' />
-      John.doe@gmail.com
+    {store.getState().user.email}
   </a>
 );
 
 class Edition extends Component {
   render() {
+    const { email, firstName, lastName } = store.getState().user;
     return (
       <Grid
         textAlign='center'
@@ -19,15 +21,15 @@ class Edition extends Component {
         <Grid.Column>
           <Header as='h2' color='teal' textAlign='center'>
             <Image src='/media/logo.svg' />
-            Register your account
+            Update your account
           </Header>
           <Grid columns={2} divided>
             <Grid.Row>
               <Grid.Column>
                 <Card
                   image='/media/logo.svg'
-                  header='John Doe'
-                  meta='inscrit le 10/03/2017'
+                  header={firstName + ' ' + lastName}
+                  meta='Special User'
                   extra={extra}
                   fluid
                 />
@@ -37,13 +39,13 @@ class Edition extends Component {
 
                   <Form.Group unstackable widths={2}>
                     <Form.Input
-                      value="John"
+                      value={firstName}
                       icon='user'
                       iconPosition='left'
                       label='First name'
                       placeholder='First name' />
                     <Form.Input
-                      value="Doe"
+                      value={lastName}
                       icon='user'
                       iconPosition='left'
                       label='Last name'
@@ -52,7 +54,7 @@ class Edition extends Component {
 
                   <Form.Group widths={2}>
                     <Form.Input
-                      value="John.doe@gmail.com"
+                      value={email}
                       icon='mail'
                       iconPosition='left'
                       label='E-mail'
@@ -75,7 +77,7 @@ class Edition extends Component {
                     color='teal'
                     fluid size='large'
                     type='submit'>
-                                            Modify
+                    Update
                   </Button>
                 </Form>
               </Grid.Column>
