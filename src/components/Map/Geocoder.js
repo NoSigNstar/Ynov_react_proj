@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { PropTypes } from 'prop-types';
 import { Input, Transition, List, Button, Icon, Modal, Header, Label } from 'semantic-ui-react';
 import XHR from '../../helpers/XHRClient';

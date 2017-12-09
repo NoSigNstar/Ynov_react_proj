@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react';
+import { Sidebar, Button, Menu, Icon } from 'semantic-ui-react';
 import { PropTypes } from 'prop-types';
 import { addDestinationRouteAsync, deleteDests } from '../../actions/destinationActions';
 import { store } from '../../store';

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReactMapboxGl, { Marker, GeoJSONLayer } from 'react-mapbox-gl';
-import { Icon } from 'semantic-ui-react';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'mapbox-gl/dist/svg/mapboxgl-ctrl-compass.svg';
 import 'mapbox-gl/dist/svg/mapboxgl-ctrl-geolocate.svg';
@@ -8,7 +7,6 @@ import 'mapbox-gl/dist/svg/mapboxgl-ctrl-zoom-in.svg';
 import 'mapbox-gl/dist/svg/mapboxgl-ctrl-zoom-out.svg';
 import Clusters from './Clusters';
 import { Map } from 'mapbox-gl/dist/mapbox-gl';
-import { store } from '../../store';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import mbUtils from 'mapbox-gl';

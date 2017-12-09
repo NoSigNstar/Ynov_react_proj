@@ -1,6 +1,4 @@
 const express = require('express');
-const path = require('path');
-const http = require('http');
 const jwt = require('jwt-simple');
 const config = require('../../config/server');
 const passport = require('../lib/AuthStrategy');

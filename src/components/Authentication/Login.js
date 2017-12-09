@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
 import { Link } from 'react-router';
 import { store } from '../../store';
-import XHR from '../../helpers/XHRClient.js';
 import PropTypes from 'prop-types';
 import { fetchUser } from '../../actions/userActions';
 

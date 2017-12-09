@@ -1,4 +1,3 @@
-import { formatTokenResponse, addUserToLocalStorage } from './helpers';
 import XHR from '../helpers/XHRClient';
 import { call, put } from 'redux-saga/effects';
 import { store } from '../store';
