@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactMapboxGl, { Marker, GeoJSONLayer } from 'react-mapbox-gl';
+import { Icon } from 'semantic-ui-react';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'mapbox-gl/dist/svg/mapboxgl-ctrl-compass.svg';
 import 'mapbox-gl/dist/svg/mapboxgl-ctrl-geolocate.svg';
@@ -13,6 +14,8 @@ import mbUtils from 'mapbox-gl';
 import Description from './sidebars/Description';
 import Destination from './sidebars/Destination';
 import Geocoder from './Geocoder';
+import { store } from '../../store';
+import { addStartDestination } from '../../actions/destinationActions';
 
 class MapIndex extends Component {
   constructor(props) {
@@ -36,7 +39,13 @@ class MapIndex extends Component {
   }
 
   _handleSelect(value) {
-    console.log(value);
+    store.dispatch(addStartDestination({
+      name: value.place_name,
+      type: 'START',
+      place_id: 'START_ID',
+      lat: value.geometry.coordinates[1],
+      lon: value.geometry.coordinates[0]
+    }));
   }
 
   render() {
@@ -59,7 +68,7 @@ class MapIndex extends Component {
         <Description user={ this.props.user } marker={this.props.marker } />
 
         {/* Clusters of destination, contains all markers */}
-        <Clusters bounds={this.state.mapBounds} user={this.props.user} />
+        <Clusters bounds={this.state.mapBounds} user={this.props.user} destIds={this.props.destinations.map(e => +e.place_id)} />
 
         {/* Geojson Routes, contains all the path between destinations */}
         {this.props.geoRoutes.routes && (
@@ -67,8 +76,24 @@ class MapIndex extends Component {
             data={this.props.geoRoutes.routes[0].geometry}
             linePaint={{ 'line-color': '#F51332', 'line-width': 4 }}
             lineLayout={{ 'line-join': 'round', 'line-cap': 'round' }}
-            type='lineLayout'/>
+            type='lineLayout' />
         )}
+
+        {/* Destination Selected for Route Computing */}
+        {this.props.destinations.length > 0 && this.props.destinations.map((dest) => {
+          return (
+            <Marker
+              style={{ cursor: 'pointer' }}
+              key={dest.place_id + 1}
+              coordinates={[dest.lon, dest.lat]}>
+              {
+                dest.type === 'START' ?
+                  (<Icon name='star' color='yellow' size='huge' />) :
+                  (<Icon name='bar' color='blue' size='big' />)
+              }
+            </Marker>
+          );
+        })}
       </this.Map>
     );
   }

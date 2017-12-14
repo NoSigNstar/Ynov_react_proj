@@ -4,6 +4,7 @@ export const DELETE_DESTS = 'DELETE_DESTS';
 export const ADD_DEST_ROUTE = 'ADD_DEST_ROUTE';
 export const ADD_DEST_ROUTE_ASYNC = 'ADD_DEST_ROUTE_ASYNC';
 export const DELETE_DEST_ROUTE = 'DELETE_DEST_ROUTE';
+export const ADD_START = 'ADD_START';
 
 /**
  * Push the coordinates to redux
@@ -47,5 +48,12 @@ export const deleteDests = (id) => {
   return {
     type: DELETE_DESTS,
     payload: id
+  };
+};
+
+export const addStartDestination = (destination) => {
+  return {
+    type: ADD_START,
+    payload: destination
   };
 };
