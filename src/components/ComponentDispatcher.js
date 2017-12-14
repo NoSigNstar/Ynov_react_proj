@@ -34,7 +34,7 @@ const Dispatcher = (roles, userRequired) =>
         }
 
         return (
-          <Grid container-fluid columns={1}>
+          <Grid columns={1}>
             <Grid.Column>
               <DynamicComponent userSession={this.props.userSession} />
             </Grid.Column>
