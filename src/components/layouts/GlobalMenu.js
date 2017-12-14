@@ -19,7 +19,7 @@ class GlobalMenu extends Component {
     return (
       <div>
         <Segment
-          inverted
+          className="header-background"
           textAlign='center'
           vertical
           style={{zIndex: 3}}
@@ -34,16 +34,25 @@ class GlobalMenu extends Component {
                 {
                   this.props.userSession ? (
                     <div>
-                      <Button as={Link} to='/map' color='orange' inverted><Icon name="map"/> Map </Button>
-                      <Button as={Link} to='/edit' inverted><Icon name="setting"/> Settings </Button>
+                      <Button as={Link} to='/map' className="btn-header" color='orange'><Icon name="map"/> Map </Button>
+                      <Button as={Link} to='/edit' className="btn-header"><Icon name="setting"/> Settings </Button>
                       <Button as={Link} to='/' onClick={() => {
                         this.logOut();
-                      }} style={{ marginLeft: '0.5em' }} inverted> <Icon name="log out" /> Log Out </Button>
+                      }} style={{ marginLeft: '0.5em' }} className="btn-header"> <Icon name="log out" /> Log Out </Button>
                     </div>
                   ) : (
                     <div>
-                      <Button as={Link} to='/login' inverted> <Icon name="user" /> Log In </Button>
-                      <Button as={Link} to='/sign-up' style={{ marginLeft: '0.5em' }} inverted> Sign In </Button>
+                      <Button
+                        as={Link}
+                        to='/login'
+                        className="btn-header"
+                      > <Icon name="user" /> Log In </Button>
+                      <Button
+                        as={Link}
+                        to='/sign-up'
+                        style={{ marginLeft: '0.5em' }}
+                        className="btn-header"
+                      > <Icon name="sign in"/> Sign In </Button>
                     </div>
                   )
                 }
