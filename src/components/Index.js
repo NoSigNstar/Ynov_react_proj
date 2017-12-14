@@ -124,7 +124,7 @@ class Index extends Component {
         <Grid>
           <Grid.Row>
             <Grid.Column mobile={16} tablet={16} computer={6} className="prensentation-pers">
-              <img
+              <Image
                 centered
                 className="nodebleu"
                 src="media/travelnodebleu.svg"
