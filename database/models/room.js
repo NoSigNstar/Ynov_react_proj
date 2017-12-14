@@ -12,12 +12,10 @@ module.exports = function (sequelize, Sequelize) {
       type: Sequelize.STRING
     },
     created_at: {
-      type: Sequelize.DATE,
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
+      type: Sequelize.DATE
     },
     updated_at: {
-      type: Sequelize.DATE,
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP')
+      type: Sequelize.DATE
     },
     marker_description_id: {
       type: Sequelize.INTEGER,

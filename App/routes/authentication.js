@@ -7,8 +7,8 @@ const passport = require('../lib/AuthStrategy');
 const User = require('../../database/models/index').User;
 
 /** **********************************
- *      ROUTES AUTHENTICATION
- *** */
+*      ROUTES AUTHENTICATION
+*** */
 const routes = express.Router();
 
 routes.post('/token', (req, res) => {
@@ -41,26 +41,20 @@ routes.route('/user')
 
 routes.route('/create-user')
   .post((req, res) => {
-    const newUserInstance = User.build({
+    // #TODO: add check for body params, each are required
+    User.create({
       first_name: req.body.first_name,
       last_name: req.body.last_name,
       password: req.body.password,
       login: req.body.login,
       email: req.body.email
+    }).then((response) => {
+      res.statusCode = 200;
+      res.json({ response: jwt.encode(response, config.jwtSecret) });
+    }).catch((error) => {
+      res.statusCode = 409;
+      res.json({ error: error.errors });
     });
-
-    if (newUserInstance) {
-      newUserInstance.save().then((response) => {
-        res.statusCode = 200;
-        res.json({ response: jwt.encode(response, config.jwtSecret) });
-      }).catch((error) => {
-        res.statusCode = 409;
-        res.json({ error: error.errors });
-      });
-    } else {
-      res.statusCode = 500;
-      res.json({ error: 'Fatal error on DB Query' });
-    }
   });
 
 routes.route('/*')

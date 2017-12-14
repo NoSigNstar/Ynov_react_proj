@@ -12,12 +12,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING
     },
     created_at: {
-      type: DataTypes.DATE,
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
+      type: DataTypes.DATE
     },
     updated_at: {
-      type: DataTypes.DATE,
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP')
+      type: DataTypes.DATE
     },
     room_id: {
       type: DataTypes.INTEGER,
