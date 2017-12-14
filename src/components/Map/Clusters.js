@@ -40,6 +40,11 @@ class Clusters extends Component {
 
     response.then((r) => {
       response = [].concat.apply([], r);
+      // remove data hold by the current user
+      if (this.props.destIds.length > 0) {
+        response = response.filter(e => !this.props.destIds.includes(+e.place_id));
+      }
+
       this.setState({
         markers: response
       });
@@ -69,6 +74,16 @@ class Clusters extends Component {
     });
   }
 
+  removePoint(placeId) {
+    const newMarkers = this.state.markers.filter((e) => {
+      return e.place_id !== placeId;
+    }).map(e => e);
+
+    this.setState({
+      markers: newMarkers
+    });
+  }
+
   render() {
     return (
       <div>
@@ -77,7 +92,7 @@ class Clusters extends Component {
                       key={'popup'}
                       coordinates={this.state.coord}
                       style={{ zIndex: 99999 }} >
-                      <PopupContent POI={this.state.popup} close={this._closePopup.bind(this)} />
+                      <PopupContent POI={this.state.popup} close={this._closePopup.bind(this)} removePoint={this.removePoint.bind(this)} />
                     </Popup>)
         }
         <Cluster zoomOnClickPadding={20} zoomOnClick={true} ClusterMarkerFactory={this.clusterMarker}>
@@ -102,7 +117,8 @@ class Clusters extends Component {
 }
 
 Clusters.propTypes = {
-  bounds: PropTypes.object
+  bounds: PropTypes.object,
+  destIds: PropTypes.array
 };
 
 export default Clusters;

@@ -1,4 +1,4 @@
-import { ADD_DEST, DELETE_DESTS } from '../actions/destinationActions';
+import { ADD_DEST, DELETE_DESTS, ADD_START } from '../actions/destinationActions';
 
 function Destinations(state = [], action) {
   switch (action.type) {
@@ -28,6 +28,11 @@ function Destinations(state = [], action) {
     }
 
     return newState;
+  case ADD_START:
+    const newStateStart = state.filter((dest) => dest.type !== 'START').map(e => e);
+    newStateStart.unshift(action.payload);
+
+    return newStateStart;
   default:
     return state;
   }

@@ -27,6 +27,7 @@ class PopupContent extends Component {
       lon: this.props.POI.lon,
       osm_type: this.props.POI.osm_type
     }));
+    this.props.removePoint(this.props.POI.place_id);
   }
 
   render() {
@@ -62,7 +63,8 @@ class PopupContent extends Component {
 PopupContent.propTypes = {
   close: PropTypes.func,
   type: PropTypes.any,
-  POI: PropTypes.object
+  POI: PropTypes.object,
+  removePoint: PropTypes.func
 };
 
 export default PopupContent;
