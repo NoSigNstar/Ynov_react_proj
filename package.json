@@ -68,7 +68,8 @@
     "socket.io": "^2.0.3",
     "socket.io-react": "^1.2.0",
     "whatwg-fetch": "^2.0.3",
-    "ws": "^3.2.0"
+    "ws": "^3.2.0",
+    "xhr": "^2.4.1"
   },
   "devDependencies": {
     "babel-core": "^6.21.0",
