@@ -10,18 +10,19 @@ function Destinations(state = [], action) {
 
     return newStated;
   case ADD_DEST:
-    // Return a copy while updating the current array if necessary TODO: MUTABLE NOT WORKING, refactor
     let locked = false;
 
     const newState = state.map(dest => {
+      // Dump the nested object
+      const dump = Object.assign({}, dest);
       if (+dest.place_id === +action.payload.place_id) {
         locked = true;
         return action.payload;
       }
-      return dest;
+      return dump;
     });
 
-    // Only add a the payload if it hasn't been updated
+    // Only add a the payload if it hasn't been updated inside the map
     if (!locked) {
       newState.push(action.payload);
     }
