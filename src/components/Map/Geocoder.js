@@ -92,8 +92,8 @@ class Geocoder extends React.Component {
 
   render() {
     return (
-      <div style={{width: 'auto', position: 'absolute', zIndex: 9999, top: 15, right: 15 }}>
-        <Button color='black' onClick={() => this.toggleModal()} >
+      <div>
+        <Button className="btn-search" onClick={() => this.toggleModal()} >
           <Icon name='search' /> search
         </Button>
 

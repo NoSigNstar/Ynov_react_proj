@@ -54,7 +54,7 @@ class MapIndex extends Component {
         className={'map'}
         center={this.state.coord}
         style={process.env.MapboxTilesStyle} containerStyle={{
-          height: '91%',
+          height: '87%',
           width: '100%'
         }}>
 
