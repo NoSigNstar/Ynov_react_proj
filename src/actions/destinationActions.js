@@ -1,9 +1,6 @@
 export const ADD_DEST_COORDINATES = 'ADD_DEST_COORDINATES';
 export const ADD_DEST = 'ADD_DEST';
 export const DELETE_DESTS = 'DELETE_DESTS';
-export const ADD_DEST_ROUTE = 'ADD_DEST_ROUTE';
-export const ADD_DEST_ROUTE_ASYNC = 'ADD_DEST_ROUTE_ASYNC';
-export const DELETE_DEST_ROUTE = 'DELETE_DEST_ROUTE';
 export const ADD_START = 'ADD_START';
 
 /**
@@ -17,26 +14,11 @@ export const addDestCoordinates = (coords) => {
   };
 };
 
-export const addDestinationRoute = (route) => {
-  return {
-    type: ADD_DEST_ROUTE,
-    payload: route
-  };
-};
 
-export const deleteDestinationRoute = () => {
-  return {
-    type: DELETE_DEST_ROUTE,
-    payload: null
-  };
-};
-
-export const addDestinationRouteAsync = () => {
-  return {
-    type: ADD_DEST_ROUTE_ASYNC
-  };
-};
-
+/**
+ * Add a new destination
+ * @param {*Destination Object} destination
+ */
 export const addDestination = (destination) => {
   return {
     type: ADD_DEST,
@@ -44,6 +26,10 @@ export const addDestination = (destination) => {
   };
 };
 
+/**
+ * Remove a destination according to the specific ID
+ * @param {*Destination id} id
+ */
 export const deleteDests = (id) => {
   return {
     type: DELETE_DESTS,
@@ -51,6 +37,10 @@ export const deleteDests = (id) => {
   };
 };
 
+/**
+ * Add the start position, alway fist of all destinations
+ * @param {*Destination Object} destination
+ */
 export const addStartDestination = (destination) => {
   return {
     type: ADD_START,

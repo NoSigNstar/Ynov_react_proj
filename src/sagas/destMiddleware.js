@@ -2,7 +2,7 @@ import XHR from '../helpers/XHRClient';
 import { call, put } from 'redux-saga/effects';
 import { store } from '../store';
 import _ from 'lodash';
-import { addDestinationRoute } from '../actions/destinationActions';
+import { addDestinationRoute } from '../actions/routeActions';
 
 
 function cloneDests() {
