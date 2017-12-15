@@ -37,7 +37,7 @@ class GlobalMenu extends Component {
           className="header-background"
           textAlign='center'
           vertical
-          style={{zIndex: 3}}
+          style={{zIndex: 6}}
         >
           <Container>
             <Menu inverted pointing stackable size='small'>
