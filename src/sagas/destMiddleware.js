@@ -57,9 +57,7 @@ export function *fetchRoute(action) {
  */
 function getOptimizeUrl(type, dests) {
   const coordinates = '?coordinates=' + getLatLonQueryString(dests.length, dests);
-  const typeUri = '&type=' + type;
-
-  return process.env.optimizeURL + coordinates + typeUri;
+  return process.env.optimizeURL + '/' + type + coordinates;
 }
 
 export function *optimizeRoute(action) {
