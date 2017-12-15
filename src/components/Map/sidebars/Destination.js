@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import { Sidebar, Button, Menu, Icon, Grid, Popup } from 'semantic-ui-react';
+import { Sidebar, Button, Menu, Icon, Modal, Select, Header, Container, Grid, Popup } from 'semantic-ui-react';
 import { PropTypes } from 'prop-types';
-import { addDestinationRouteAsync } from '../../actions/routeActions';
+import { addDestinationRouteAsync, optimizeRoute } from '../../actions/routeActions';
 import { deleteDests } from '../../actions/destinationActions';
 import { store } from '../../store';
 
 class Destination extends Component {
   constructor(props) {
     super(props);
-    this.state = { visible: false };
+
+    this.state = { visible: false, desc: null, selected: process.env.optimizerType.TCP.name, modes: props.modes};
     this.size = props.destinations.length;
-    console.log(props.destinations);
   }
 
   toggleVisibility() {
@@ -45,7 +45,22 @@ class Destination extends Component {
   }
 
   optimize() {
+    store.dispatch(optimizeRoute(this.state.selected));
+  }
 
+  _handleChange(value, element) {
+    if (!element.value || element.value === '') {
+      return;
+    }
+
+    const data = element.options.filter(e => {
+      return e.value === element.value;
+    })[0].data;
+
+    this.setState({
+      selected: element.name,
+      desc: data
+    });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -87,7 +102,25 @@ class Destination extends Component {
             />
           ))}
           {this.isDestinationsPropsPositiv() &&
-            (<Button icon='map' className="btn-route" fluid color='blue' size='medium' content='Compute routes' onClick={() => this.getRoute()} />)
+            (<div>
+              <Button icon='map' className="btn-route" fluid color='blue' size='medium' content='Compute routes' onClick={() => this.getRoute()} />
+              <Modal
+                trigger={<Button icon='setting' fluid color='black' size='medium' content='optimize routes' />}
+                header='Optimization!'
+                content={(
+                  <Container text style={{marginTop: 15}}>
+                    <Header as='h4' icon='plug' content='Select optimizing type' />
+                    <Select placeholder='Select the Optimize Mode' options={this.state.modes} onChange={(e, element) => this._handleChange(e, element)} />
+                    {this.state.desc && (
+                      <p>{this.state.desc}</p>
+                    )}
+                  </Container>
+                )}
+                actions={[
+                  { key: 'cancel', content: 'Cancel', positive: false },
+                  { key: 'done', content: 'Optimize', positive: true, onClick: this.optimize.bind(this) }
+                ]}/>
+            </div>)
           }
         </Sidebar>
       </div>
@@ -97,7 +130,8 @@ class Destination extends Component {
 
 Destination.propTypes = {
   visible: PropTypes.any,
-  destinations: PropTypes.array
+  destinations: PropTypes.array,
+  modes: PropTypes.array
 };
 
 export default Destination;

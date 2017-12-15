@@ -16,6 +16,7 @@ import Destination from './sidebars/Destination';
 import Geocoder from './Geocoder';
 import { store } from '../../store';
 import { addStartDestination } from '../../actions/destinationActions';
+import { getoptimizerTypeArray } from '../../helpers/environment';
 
 class MapIndex extends Component {
   constructor(props) {
@@ -63,7 +64,7 @@ class MapIndex extends Component {
         <Geocoder accessToken={process.env.MapboxKey} onSelect={this._handleSelect} showLoader={true} />
 
         {/* Sidebar used to store Selected Destinations */}
-        <Destination destinations={this.props.destinations} />
+        <Destination destinations={this.props.destinations} modes={getoptimizerTypeArray()} />
 
         <Description user={ this.props.user } marker={this.props.marker } />
 
