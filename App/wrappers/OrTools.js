@@ -27,8 +27,14 @@ const TSP = function (options, nodes) {
   });
 };
 
+/**
+ * WARNING: This method is called in another Thread !!!
+ * Find the best routes in a case of constraints as Time Windows, Visits durations and Distance Costs
+ * @param {*Options for Vehicle Routing Problem} options
+ * @param {*Hash containing: {costs, durations, timeWindows, demands}} nodes
+ */
 const VRP = function (options, nodes) {
-
+  return { error: 'Method not implemented' };
 };
 
 

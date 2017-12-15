@@ -1,6 +1,5 @@
 const express = require('express');
 const OSRM = require('../wrappers/OSRM');
-const Solver = require('../wrappers/OrTools');
 
 /** **********************************
  *      Routes Two Points
@@ -30,35 +29,16 @@ routes.route('/')
     });
   });
 
-routes.route('/optimize')
+routes.route('/optimize/tcp')
   .get(function (req, res) {
-    let costs = [
-      [0, 10, 20, 30],
-      [10, 0, 10, 10],
-      [10, 10, 0, 10],
-      [50, 10, 10, 0]
-    ];
+    const coordinates = req.query.coordinates && req.query.coordinates.split(';');
 
-    let tspSolverOpts = {
-      numNodes: 4,
-      costs: costs
-    };
-
-    let tspSearchOpts = {
-      computeTimeLimit: 1000,
-      depotNode: 0
-    };
-
-    Solver.TSP({
-      solverOpts: tspSolverOpts,
-      searchOpts: tspSearchOpts
-    },
-    costs).then(function (err, solution) {
-      if (err) {
-        return res.json(err);
-      }
-
-      return res.json(solution);
+    OSRM.TCPOptim(coordinates).then((response) => {
+      res.status(200);
+      return res.json(response);
+    }).catch((error) => {
+      res.status(500);
+      return res.json({ error: error });
     });
   });
 
