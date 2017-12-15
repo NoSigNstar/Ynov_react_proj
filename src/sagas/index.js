@@ -1,7 +1,7 @@
 import { FETCH_USER, DROP_USER_ASYNC, CREATE_USER } from '../actions/userActions';
 import { takeLatest, takeEvery } from 'redux-saga/effects';
 import { dropUserAsync, userXhr, createUserAsync } from './userMiddleware';
-import { ADD_DEST_ROUTE_ASYNC } from '../actions/map/destinationActions';
+import { ADD_DEST_ROUTE_ASYNC } from '../actions/routeActions';
 import { GET_DESCRIPTION } from '../actions/map/descriptionActions';
 import { ADD_GRADE } from '../actions/map/gradeActions';
 import { fetchRoute } from './destMiddleware';

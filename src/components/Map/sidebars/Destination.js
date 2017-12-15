@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Sidebar, Button, Menu, Icon, Grid, Popup } from 'semantic-ui-react';
 import { PropTypes } from 'prop-types';
-import { addDestinationRouteAsync, deleteDests } from './../../../actions/map/destinationActions';
-import { store } from './../../../store';
+import { addDestinationRouteAsync } from '../../actions/routeActions';
+import { deleteDests } from '../../actions/destinationActions';
+import { store } from '../../store';
 
 class Destination extends Component {
   constructor(props) {
@@ -43,6 +44,10 @@ class Destination extends Component {
     }
   }
 
+  optimize() {
+
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.destinations.length === this.size) {
       return;
@@ -58,9 +63,10 @@ class Destination extends Component {
         <Sidebar id="left-sidebar" as={Menu} animation='push' width='wide' visible={this.state.visible} icon='labeled' vertical>
           {this.props.destinations.map((dest) => (
             <Popup
+              key={dest.place_id}
               className="popup"
               trigger={
-                <div key={dest.place_id} onClick={() => this.getcoordinatesfor(dest)}>
+                <div onClick={() => this.getcoordinatesfor(dest)}>
                   <Button className="btn-close-item" icon='close' onClick={() => this.handleRemove(dest.place_id)} />
                   <Menu.Item name='home'>
                     <Grid>
@@ -83,7 +89,6 @@ class Destination extends Component {
           {this.isDestinationsPropsPositiv() &&
             (<Button icon='map' className="btn-route" fluid color='blue' size='medium' content='Compute routes' onClick={() => this.getRoute()} />)
           }
-
         </Sidebar>
       </div>
     );
