@@ -3,6 +3,7 @@ import { call, put } from 'redux-saga/effects';
 import { store } from '../store';
 import _ from 'lodash';
 import { addDestinationRoute } from '../actions/routeActions';
+import { throws } from 'assert';
 
 
 function cloneDests() {
@@ -28,6 +29,10 @@ function getLatLonQueryString(size, collection) {
   return query;
 }
 
+// =======================================
+//        Routes Fetching Section
+// =======================================
+
 /**
  * Fetch API to get the route between POI
  * @param{*The current action} action
@@ -42,3 +47,32 @@ export function *fetchRoute(action) {
   yield put(addDestinationRoute(route));
 }
 
+// =======================================
+//          Optimizer Section
+// =======================================
+
+/**
+ * Return url formated with params for the optimization API
+ * @param {*Optimizer type} type
+ */
+function getOptimizeUrl(type) {
+  const coordinates = '?coordinates=' + getLatLonQueryString(dests.length, dests);
+  const typeUri = '&type=' + action.payload;
+
+  return process.env.optimizeURL + coordinates + typeUri;
+}
+
+export function *optimizeRoute(action) {
+  const dests = cloneDests();
+  if (dests.length < 2) {
+    console.error('optimization can\'t be processed. Destination number is below 2');
+  }
+
+  // Call optimization
+  const optimizedOrder = yield call(XHR.get, getOptimizeUrl(action.payload), {});
+  if (optimizedOrder.error) {
+    throw new Error('error occured on route optimization');
+  }
+
+  console.log(optimizedOrder);
+}

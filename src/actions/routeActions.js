@@ -1,6 +1,7 @@
 export const ADD_DEST_ROUTE = 'ADD_DEST_ROUTE';
 export const ADD_DEST_ROUTE_ASYNC = 'ADD_DEST_ROUTE_ASYNC';
 export const DELETE_DEST_ROUTE = 'DELETE_DEST_ROUTE';
+export const OPTIMIZE_ROUTE = 'OPTIMIZE_ROUTE';
 
 /**
  * Add a complete geojson route
@@ -31,3 +32,11 @@ export const addDestinationRouteAsync = () => {
     type: ADD_DEST_ROUTE_ASYNC
   };
 };
+
+export const optimizeRoute = (type) => {
+  return {
+    type: OPTIMIZE_ROUTE,
+    payload: type
+  };
+}
+;
