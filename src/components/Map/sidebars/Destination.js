@@ -58,7 +58,7 @@ class Destination extends Component {
     })[0].data;
 
     this.setState({
-      selected: element.name,
+      selected: element.value,
       desc: data
     });
   }
