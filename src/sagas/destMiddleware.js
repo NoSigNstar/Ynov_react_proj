@@ -55,9 +55,9 @@ export function *fetchRoute(action) {
  * Return url formated with params for the optimization API
  * @param {*Optimizer type} type
  */
-function getOptimizeUrl(type) {
+function getOptimizeUrl(type, dests) {
   const coordinates = '?coordinates=' + getLatLonQueryString(dests.length, dests);
-  const typeUri = '&type=' + action.payload;
+  const typeUri = '&type=' + type;
 
   return process.env.optimizeURL + coordinates + typeUri;
 }
@@ -69,7 +69,7 @@ export function *optimizeRoute(action) {
   }
 
   // Call optimization
-  const optimizedOrder = yield call(XHR.get, getOptimizeUrl(action.payload), {});
+  const optimizedOrder = yield call(XHR.get, getOptimizeUrl(action.payload, dests), {});
   if (optimizedOrder.error) {
     throw new Error('error occured on route optimization');
   }
