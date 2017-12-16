@@ -20,3 +20,17 @@ export function getoptimizerTypeArray() {
 
   return modes;
 }
+
+export function sortByIndex(orderArray, collection) {
+  if (orderArray.length + 1 !== collection.length) {
+    return { error: 'Lenght of collections doesn\'t match' };
+  }
+
+  const response = [];
+  for (let i = 0; i < orderArray.length; i++) {
+    const item = { ...collection[i + 1], index: orderArray[i] + 1 };
+    response[orderArray[i]] = item;
+  }
+  response[0] = { ...collection[0], index: 1 };
+  return response;
+}

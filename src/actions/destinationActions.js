@@ -2,6 +2,7 @@ export const ADD_DEST_COORDINATES = 'ADD_DEST_COORDINATES';
 export const ADD_DEST = 'ADD_DEST';
 export const DELETE_DESTS = 'DELETE_DESTS';
 export const ADD_START = 'ADD_START';
+export const REPLACE_DESTINATIONS = 'REPLACE_DESTINATIONS';
 
 /**
  * Push the coordinates to redux
@@ -45,5 +46,16 @@ export const addStartDestination = (destination) => {
   return {
     type: ADD_START,
     payload: destination
+  };
+};
+
+/**
+ * Re-order the destinations, triggered by the optimization return
+ * @param {*new destinations array} destinations
+ */
+export const replaceDestinations = (destinations) => {
+  return {
+    type: REPLACE_DESTINATIONS,
+    payload: destinations
   };
 };
