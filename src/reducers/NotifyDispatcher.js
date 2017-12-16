@@ -1,5 +1,5 @@
 
-import { CONNECTION_ERROR, REGISTER_ERROR, REMOVE_NOTIFY } from '../actions/errorsAction';
+import { CONNECTION_ERROR, REGISTER_ERROR, REMOVE_NOTIFY, OPTIMIZATION_ERROR } from '../actions/errorsAction';
 import { CONNECTION_SUCCESS } from '../actions/successActions';
 
 function notifyDispatcher(state = {}, action) {
@@ -17,6 +17,12 @@ function notifyDispatcher(state = {}, action) {
     return {
       notifyType: 'error',
       message: 'Registration error: ' + action.payload
+    };
+
+  case OPTIMIZATION_ERROR:
+    return {
+      notifyType: 'error',
+      message: 'Optmization error: ' + action.payload
     };
   // ========================
   //        SUCCESS

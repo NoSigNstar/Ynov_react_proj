@@ -107,7 +107,7 @@ class Destination extends Component {
                   <Menu.Item name='home'>
                     <Grid>
                       <Grid.Column width={4}>
-                        <Icon name='home' />
+                        <Icon name='home' />{dest.index}
                       </Grid.Column>
                       <Grid.Column width={12}>
                         <p>

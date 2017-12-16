@@ -2,8 +2,10 @@ import XHR from '../helpers/XHRClient';
 import { call, put } from 'redux-saga/effects';
 import { store } from '../store';
 import _ from 'lodash';
-import { addDestinationRoute } from '../actions/routeActions';
-import { throws } from 'assert';
+import { addDestinationRoute, addDestinationRouteAsync } from '../actions/routeActions';
+import { replaceDestinations } from '../actions/destinationActions';
+import { optimizationError } from '../actions/errorsAction';
+import { sortByIndex } from '../helpers/environment';
 
 
 function cloneDests() {
@@ -69,8 +71,12 @@ export function *optimizeRoute(action) {
   // Call optimization
   const optimizedOrder = yield call(XHR.get, getOptimizeUrl(action.payload, dests), {});
   if (optimizedOrder.error) {
-    throw new Error('error occured on route optimization');
+    yield put(optimizationError(optimizedOrder.error));
+    return;
   }
 
-  console.log(optimizedOrder);
+  const sortedDestinations = sortByIndex(optimizedOrder, dests);
+
+  yield put(replaceDestinations(sortedDestinations));
+  yield put(addDestinationRouteAsync());
 }
