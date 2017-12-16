@@ -11,7 +11,7 @@ const extra = (
 
 class Edition extends Component {
   render() {
-    const { email, firstName, lastName } = store.getState().user;
+    const { email, first_name, last_name } = store.getState().user;
     return (
       <Grid
         textAlign='center'
@@ -29,7 +29,7 @@ class Edition extends Component {
               <Grid.Column>
                 <Card
                   image='/media/travelnode.svg'
-                  header={firstName + ' ' + lastName}
+                  header={first_name + ' ' + last_name}
                   meta='Special User'
                   extra={extra}
                   fluid
@@ -40,13 +40,13 @@ class Edition extends Component {
 
                   <Form.Group unstackable widths={2}>
                     <Form.Input
-                      value={firstName}
+                      value={first_name}
                       icon='user'
                       iconPosition='left'
                       label='First name'
                       placeholder='First name' />
                     <Form.Input
-                      value={lastName}
+                      value={last_name}
                       icon='user'
                       iconPosition='left'
                       label='Last name'
