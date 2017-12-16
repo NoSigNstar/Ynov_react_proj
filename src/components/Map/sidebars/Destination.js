@@ -9,7 +9,7 @@ class Destination extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { visible: false, desc: null, selected: process.env.optimizerType.TCP.name, modes: props.modes};
+    this.state = { visible: false, desc: null, selected: process.env.optimizerType.TCP.name, modes: props.modes, open: false};
     this.size = props.destinations.length;
   }
 
@@ -46,6 +46,7 @@ class Destination extends Component {
 
   optimize() {
     store.dispatch(optimizeRoute(this.state.selected));
+    this.toggleModal();
   }
 
   _handleChange(value, element) {
@@ -61,6 +62,26 @@ class Destination extends Component {
       selected: element.value,
       desc: data
     });
+  }
+
+  toggleModal() {
+    this.setState({
+      open: !this.state.open
+    });
+  }
+
+  startPointIsDefined(event, data) {
+    const isStart = store.getState().destination[0].type;
+    return (isStart === 'START');
+  }
+
+  openOptimModal() {
+    if (!this.startPointIsDefined()) {
+      this.props.notify.warning('please select a starting point using the search button');
+      return;
+    }
+
+    this.toggleModal();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -104,10 +125,11 @@ class Destination extends Component {
           {this.isDestinationsPropsPositiv() &&
             (<div>
               <Button icon='map' className="btn-route" fluid color='blue' size='medium' content='Compute routes' onClick={() => this.getRoute()} />
+              <Button icon='setting' fluid color='black' size='medium' content='optimize routes' onClick={this.openOptimModal.bind(this)} />
               <Modal
-                className="modal"
-                trigger={<Button className="btn-optimaze" icon='setting' fluid color='black' size='medium' content='optimize routes' />}
+                open={this.state.open}
                 header='Optimization !'
+                className="modal"
                 content={(
                   <Container text style={{marginTop: 15}}>
                     <Header as='h4' className="flex-center" icon='plug' content='Select optimizing type' />
@@ -118,7 +140,7 @@ class Destination extends Component {
                   </Container>
                 )}
                 actions={[
-                  { key: 'cancel', content: 'Cancel', positive: false },
+                  { key: 'cancel', content: 'Cancel', positive: false, onClick: this.toggleModal.bind(this) },
                   { key: 'done', content: 'Optimize', positive: true, onClick: this.optimize.bind(this), className: 'btn-bleu' }
                 ]}/>
 
@@ -131,6 +153,7 @@ class Destination extends Component {
 }
 
 Destination.propTypes = {
+  notify: PropTypes.object,
   visible: PropTypes.any,
   destinations: PropTypes.array,
   modes: PropTypes.array

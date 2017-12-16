@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { store } from './store.js';
 import { router } from './router.js';
 import 'semantic-ui-css/semantic.min.css';
+import 'react-notifications/lib/notifications.css';
 
 process.env.MapboxKey = 'pk.eyJ1IjoianVoMzMiLCJhIjoiY2o5ZnZnMnpyMDQ1ajJxcnFoeXZuZWp6eCJ9.ECUpg6xQI-XcMTjfiZcvyw';
 process.env.SocketUrl = 'http://localhost:3080';
