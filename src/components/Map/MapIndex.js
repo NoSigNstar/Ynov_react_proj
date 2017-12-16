@@ -67,7 +67,7 @@ class MapIndex extends Component {
         />
 
         {/* Sidebar used to store Selected Destinations */}
-        <SideBar destinations={this.props.destinations} modes={getoptimizerTypeArray()} />
+        <SideBar destinations={this.props.destinations} modes={getoptimizerTypeArray()} notify={this.props.notify} />
 
         {/* Clusters of destination, contains all markers */}
         <Clusters bounds={this.state.mapBounds} destIds={this.props.destinations.map(e => +e.place_id)} />
@@ -102,6 +102,7 @@ class MapIndex extends Component {
 }
 
 MapIndex.propTypes = {
+  notify: PropTypes.object,
   route: PropTypes.any,
   destinations: PropTypes.array,
   geoRoutes: PropTypes.object

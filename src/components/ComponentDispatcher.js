@@ -28,14 +28,14 @@ const Dispatcher = (roles, userRequired) =>
 
         if (options.raw) {
           return (
-            <DynamicComponent userSession={this.props.userSession} />
+            <DynamicComponent userSession={this.props.userSession} notify={this.props.notify} />
           );
         }
 
         return (
           <Grid columns={1}>
             <Grid.Column>
-              <DynamicComponent userSession={this.props.userSession} />
+              <DynamicComponent userSession={this.props.userSession} notify={this.props.notify} />
             </Grid.Column>
           </Grid>
         );
@@ -43,7 +43,8 @@ const Dispatcher = (roles, userRequired) =>
     }
 
     Manager.propTypes = {
-      userSession: PropTypes.bool
+      userSession: PropTypes.bool,
+      notify: PropTypes.object
     };
 
     return Manager;
