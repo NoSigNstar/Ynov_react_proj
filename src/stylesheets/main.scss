@@ -2,8 +2,11 @@ $primary-color: #04a4cd;
 $white-color: #fff;
 $grey-light-color: #a5a5a5;
 $grey-dark-color: #505050;
+$dark: #1b1c1d;
 
 $linear-default: linear-gradient(100deg, #1f98d4 30%, #00c0e6 70%);
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 body {
     padding: 0;
@@ -189,7 +192,7 @@ body {
 
 #left-sidebar{
     z-index: 4;
-    margin-top: 150px !important;
+    background: none !important;
     margin-top: 123px !important;
     height: auto !important;
     overflow: hidden;
@@ -197,6 +200,7 @@ body {
 
 .ui.sidebar{ 
     height: auto !important;  
+    max-height: 80% !important;
     background-color: #fff !important;
     -webkit-box-shadow: 10px 10px 23px 0px rgba(0,0,0,0.37) !important;
     -moz-box-shadow: 10px 10px 23px 0px rgba(0,0,0,0.37) !important;
@@ -210,6 +214,11 @@ body {
         border-top: 1px solid #c7c7c7 !important;
         font-size: 14px;
         transition: 0.5s;
+        p{
+            font-size: 16px;
+            text-align: left;
+            font-family: 'Roboto', sans-serif;
+        }
     }
     .item i{
         color: #08a5cf !important;
@@ -219,6 +228,10 @@ body {
         background: $linear-default !important;
         border-radius: 0;
     }
+    .btn-optimaze{
+        border-radius: 0;
+    };
+
     .btn-close-item{
         padding: 3px !important;
         background: none !important;
@@ -231,6 +244,79 @@ body {
         }
     }
 
+}
+
+/////////////////
+// UTILS MAPBOX - CARD
+////////////////
+
+.mapboxgl-popup-tip{
+    -webkit-box-shadow: 10px 10px 23px 0px rgba(0,0,0,0.37) !important;
+    -moz-box-shadow: 10px 10px 23px 0px rgba(0,0,0,0.37) !important;
+    box-shadow: 10px 10px 23px 0px rgba(0,0,0,0.37) !important;
+}
+
+.popup-card{
+    border-radius: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    .close{
+        float: right;
+        color: #b9b9b9;
+    }
+    .content{
+        text-align: center;
+        border: none !important;
+    }
+    #btn-add{
+        width: 48% !important;
+        color: $white-color !important;
+        background-color: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        transition: 0.3s;
+        i{
+            font-size: 20px;
+        }
+    }
+    #btn-add:hover, #btn-add:focus{
+        background-color: $primary-color !important;
+        padding-bottom: 4px;
+        box-shadow: none !important;
+    }
+    #btn-information{
+        width: 48% !important;
+        color: $white-color !important;
+        background-color: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        i{
+            font-size: 20px;
+        }
+    }
+    #btn-information:hover, #btn-information:focus{
+        background-color: $primary-color !important;
+        box-shadow: none !important;
+    }
+    #content-bottom{
+        padding: 0px;
+        background: $primary-color !important;
+        padding: 10px 0 0 0 !important;
+        border: none !important;
+    }
+}
+
+.popup-card-top{
+    display: flex;
+    padding: 20px 0 20px 0;
+    text-align: center;
+    justify-content: center;
+    img{
+        height: 50px !important;
+        width: 50px !important;
+    }
 }
 
 /////////////////
@@ -253,4 +339,55 @@ body {
 }
 .popup{
     background-color: none !important;
+}
+
+/////////////////
+// UTILS MAPBOX - modal
+////////////////
+
+.modal{
+    text-align: center !important;
+    .header{
+        background-color: #04a4cd !important;
+        color: #fff !important;
+    }
+    .flex-center{
+        background: none !important;
+        color: #3b3b3b !important;
+        display: flex;
+        justify-content: center;
+    }
+    .btn-bleu{
+        background-color: $primary-color !important;
+        color: $white-color !important;
+    }
+    .actions{
+        border-top: none !important;
+        text-align: center !important;
+    }
+    .list-item{
+        text-align: left;
+        color: #8c8c8c;
+        i{
+            color: $primary-color !important;
+            margin-right: 15px !important;
+        }
+    }
+    .list-item:first-child{
+        color: $grey-dark-color !important;
+    }
+    .btn-close-modal{
+        color: $white-color !important;
+        background: none !important;
+    }
+}
+
+.btn-bleu{
+    color: $white-color !important;
+    background-color: $primary-color !important;
+}
+
+.ui.modal > .actions{
+    border-bottom: none !important;
+    text-align: center;
 }

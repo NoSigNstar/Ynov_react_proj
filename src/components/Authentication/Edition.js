@@ -15,19 +15,20 @@ class Edition extends Component {
     return (
       <Grid
         textAlign='center'
-        style={{ height: '50%' }}
+        style={{ height: '89%' }}
         verticalAlign='middle'
       >
         <Grid.Column>
           <Header as='h2' color='teal' textAlign='center'>
-            <Image src='/media/logo.svg' />
-            Update your account
+            <Image
+              style={{ minWidth: 300 }}
+              src='/media/travelnodebleu.svg' />
           </Header>
           <Grid columns={2} divided>
             <Grid.Row>
               <Grid.Column>
                 <Card
-                  image='/media/logo.svg'
+                  image='/media/travelnode.svg'
                   header={firstName + ' ' + lastName}
                   meta='Special User'
                   extra={extra}
@@ -74,6 +75,7 @@ class Edition extends Component {
                     style={{ display: 'none' }}
                   />
                   <Button
+                    className="btn-bleu"
                     color='teal'
                     fluid size='large'
                     type='submit'>

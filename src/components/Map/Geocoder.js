@@ -99,8 +99,10 @@ class Geocoder extends React.Component {
 
         <Modal open={this.state.visible}>
 
+          <Button className="close" className="btn-close-modal" icon='close' onClick={() => this.toggleModal()} floated="right" />
+
           <Modal.Header>
-            <Icon name='map' color='blue' />
+            <Icon name='map' color='white' />
             Research a localisation
             <Input
               icon={{ name: 'search', circular: true, link: true }}
@@ -113,9 +115,8 @@ class Geocoder extends React.Component {
           </Modal.Header>
           <Modal.Content scrolling style={{height: 250, overflow: 'auto'}}>
 
-
             <Modal.Description>
-              <Header>Results:</Header>
+              <Header className="flex-center" >Results:</Header>
               <Transition.Group
                 as={List}
                 duration={200}
@@ -124,9 +125,9 @@ class Geocoder extends React.Component {
                 verticalAlign='middle'>
 
                 {this.state.results.length > 0 && this.state.results.map((result, i) => (
-                  <List.Item key={result.id} style={{cursor: 'pointer'}} onClick={this.clickOption.bind(this, result, i)}>
+                  <List.Item className="list-item" key={result.id} style={{cursor: 'pointer'}} onClick={this.clickOption.bind(this, result, i)}>
                     {this.state.focus === i && (
-                      <Icon name='send' color='red' />
+                      <Icon name='send' />
                     )}
                     {result.place_name}
                   </List.Item>
@@ -134,9 +135,7 @@ class Geocoder extends React.Component {
               </Transition.Group>
             </Modal.Description>
           </Modal.Content>
-          <Modal.Actions>
-            <Button primary onClick={() => this.toggleModal()}> Close <Icon name='close' /> </Button>
-          </Modal.Actions>
+          <Modal.Actions />
         </Modal>
       </div>
     );
