@@ -38,18 +38,19 @@ class Register extends Component {
     return (
       <Grid
         textAlign='center'
-        style={{ height: '50%' }}
+        style={{ height: '89%' }}
         verticalAlign='middle'
       >
         <Grid.Column>
           <Container>
             <Header as='h2' color='teal' textAlign='center'>
-              <Image src='/media/logo.svg' />
-      Register your account
+              <Image
+                style={{ minWidth: 200 }}
+                src='/media/travelnodebleu.svg' />
             </Header>
             <Segment stacked>
               <Form loading={this.state.loading} size='large'>
-                <Form.Group unstackable widths={1}>
+                <Form.Field unstackable widths={1}>
                   <Form.Input
                     icon='user'
                     iconPosition='left'
@@ -57,7 +58,7 @@ class Register extends Component {
                     label='Login'
                     value={login}
                     placeholder='login' />
-                </Form.Group>
+                </Form.Field>
 
                 <Form.Group unstackable widths={2}>
                   <Form.Input
@@ -105,7 +106,7 @@ class Register extends Component {
                   style={{ display: 'none' }}
                 />
                 <Button
-                  color='teal'
+                  className="btn-bleu"
                   fluid size='large'
                   onClick={(form) => this._submit(form)}
                   type='submit'>

@@ -32,10 +32,12 @@ class PopupContent extends Component {
 
   render() {
     return (
-      <Card>
-        <Card.Content>
-          <Button className="close" icon='close' onClick={this.props.close} floated="right" />
+      <Card className="popup-card">
+        <Button className="close" icon='close' onClick={this.props.close} floated="right" />
+        <div className="popup-card-top">
           <Image floated='left' size='mini' src={this.typeMarkers[this.props.POI.type]} />
+        </div>
+        <Card.Content>
           <Card.Header>
             {this.props.POI.display_name[0]}
           </Card.Header>
@@ -49,13 +51,13 @@ class PopupContent extends Component {
             {this.props.POI.display_name[8]}
           </Card.Description>
         </Card.Content>
-        <Card.Content extra>
+        <Card.Content extra id="content-bottom">
           <div>
-            <Button basic color='green' icon='plus' content='Ajouter' onClick={() => {
+            <Button basic id="btn-add" icon='plus' onClick={() => {
               this.addDestination();
               this.props.close();
             }} />
-            <Button basic color='blue' icon='info' content='Informations' />
+            <Button basic id="btn-information" icon='info' />
           </div>
         </Card.Content>
       </Card>

@@ -24,13 +24,14 @@ class Login extends Component {
       <div className='login-form'>
         <Grid
           textAlign='center'
-          style={{ height: '50%' }}
+          style={{ height: '89%' }}
           verticalAlign='middle'
         >
           <Grid.Column style={{ maxWidth: 450 }}>
             <Header as='h2' color='teal' textAlign='center'>
-              <Image src='/media/logo.svg' />
-              Log-in to your account
+              <Image
+                style={{ minWidth: 200 }}
+                src='/media/travelnodebleu.svg' />
             </Header>
             <Form size='large' onSubmit={() => {
               this.submitHandler();
@@ -62,7 +63,7 @@ class Login extends Component {
                   }}
                 />
 
-                <Button color='teal' fluid size='large'>Login</Button>
+                <Button className="btn-bleu" fluid size='large'>Login</Button>
               </Segment>
             </Form>
             <Message>

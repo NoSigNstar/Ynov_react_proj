@@ -105,11 +105,12 @@ class SideBar extends Component {
             (<div>
               <Button icon='map' className="btn-route" fluid color='blue' size='medium' content='Compute routes' onClick={() => this.getRoute()} />
               <Modal
-                trigger={<Button icon='setting' fluid color='black' size='medium' content='optimize routes' />}
-                header='Optimization!'
+                className="modal"
+                trigger={<Button className="btn-optimaze" icon='setting' fluid color='black' size='medium' content='optimize routes' />}
+                header='Optimization !'
                 content={(
                   <Container text style={{marginTop: 15}}>
-                    <Header as='h4' icon='plug' content='Select optimizing type' />
+                    <Header as='h4' className="flex-center" icon='plug' content='Select optimizing type' />
                     <Select placeholder='Select the Optimize Mode' options={this.state.modes} onChange={(e, element) => this._handleChange(e, element)} />
                     {this.state.desc && (
                       <p>{this.state.desc}</p>
@@ -118,8 +119,9 @@ class SideBar extends Component {
                 )}
                 actions={[
                   { key: 'cancel', content: 'Cancel', positive: false },
-                  { key: 'done', content: 'Optimize', positive: true, onClick: this.optimize.bind(this) }
+                  { key: 'done', content: 'Optimize', positive: true, onClick: this.optimize.bind(this), className: 'btn-bleu' }
                 ]}/>
+
             </div>)
           }
         </Sidebar>
