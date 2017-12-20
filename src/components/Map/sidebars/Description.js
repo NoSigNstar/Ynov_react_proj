@@ -74,7 +74,8 @@ class Description extends Component {
     return (
       <div>
         <Sidebar
-          style={{width: '330px', height: '100%', backgroundColor: '#fff'}}
+          id="sidebar-right"
+          style={{width: '330px', backgroundColor: '#fff'}}
           animation='overlay'
           visible={this.state.visible}
           direction='right'

@@ -306,8 +306,27 @@ body {
     #content-bottom{
         padding: 0px;
         background: $primary-color !important;
-        padding: 10px 0 0 0 !important;
+        padding: 0 !important;
         border: none !important;
+        border-radius: 0 !important;
+    }
+}
+
+.categories .list .item{
+    padding: 5px 0 5px 0 !important;
+    border: none !important;
+}
+
+.categories{
+    margin-bottom: 20px !important;
+}
+
+.ui.sidebar .menu .item{
+    padding: 10px !important;
+    border-top: none !important;
+    color: $grey-light-color !important;
+    .active{
+        border-bottom: 2px solid $primary-color !important;
     }
 }
 
@@ -393,4 +412,42 @@ body {
 .ui.modal > .actions{
     border-bottom: none !important;
     text-align: center;
+}
+
+/////////////////
+// CHAT
+////////////////
+
+.headerSidebar{
+    height: 100px;
+    background-color: $primary-color !important;
+    button{
+        background-color: $primary-color !important;
+    }
+    img{
+        background-color: #fff;
+        padding: 5px;
+        border-radius: 100%;
+    }
+}
+
+#sidebar-right{
+    margin-top: 11% !important;
+    height: auto !important;
+}
+.chat-width{
+    padding: 0 0 0 15px !important;
+    width: 100%;
+}
+.chat-input{
+    width: 100%;
+    text-align: center;
+}
+.chat{
+    margin: 0 !important;
+    width: 100%;
+    .ui .message{
+        width: 100%;
+        text-align: center;
+    }
 }

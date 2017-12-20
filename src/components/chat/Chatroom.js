@@ -123,11 +123,11 @@ class Chatroom extends Component {
 
   render() {
     return (
-      <div className="ui grid">
+      <div className="ui grid chat">
         <h3 className="ui header">
           { this.props.marker.name }
         </h3>
-        <div>
+        <div className="chat-width">
           {
             this.state.history ?
               this.state.history.map((h, i) =>
@@ -141,7 +141,7 @@ class Chatroom extends Component {
               : ''
           }
         </div>
-        <form className="ui message" onSubmit={ this.submitMessage }>
+        <form className="ui message chat-input" onSubmit={ this.submitMessage }>
           <div className="ui icon input">
             <div className="field">
               <input type="texte" disabled={ !this.state.connected } value={ this.state.textarea } onChange={ this.handleChange } placeholder="Message"/>

@@ -71,7 +71,7 @@ class PopupContent extends Component {
               this.addDestination();
               this.props.close();
             }} />
-            <Button basic color='blue' icon='info' id='btn-information' content='Informations' onClick={() => this.showDescription()}/>
+            <Button basic color='blue' icon='info' id='btn-information' onClick={() => this.showDescription()}/>
           </div>
         </Card.Content>
       </Card>
