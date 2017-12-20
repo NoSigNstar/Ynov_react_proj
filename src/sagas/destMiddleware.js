@@ -57,9 +57,9 @@ export function *fetchRoute(action) {
  * Return url formated with params for the optimization API
  * @param {*Optimizer type} type
  */
-function getOptimizeUrl(type, dests) {
+function getOptimizeUrl(payload, dests) {
   const coordinates = '?coordinates=' + getLatLonQueryString(dests.length, dests);
-  return process.env.optimizeURL + '/' + type + coordinates;
+  return process.env.optimizeURL + '/' + payload.solver + coordinates + '&profile=' + payload.profile;
 }
 
 export function *optimizeRoute(action) {

@@ -21,6 +21,26 @@ export function getoptimizerTypeArray() {
   return modes;
 }
 
+export function getOptimizerProfile() {
+  const profile = [];
+
+  for (const type in process.env.profiles) {
+    if (!process.env.profiles.hasOwnProperty(type)) {
+      continue;
+    }
+
+    profile.push({
+      key: process.env.profiles[type].name,
+      text: process.env.profiles[type].name,
+      value: process.env.profiles[type].name,
+      icon: process.env.profiles[type].icon,
+      data: process.env.profiles[type].description
+    });
+  }
+
+  return profile;
+}
+
 export function sortByIndex(orderArray, collection) {
   if (orderArray.length + 1 !== collection.length) {
     return { error: 'Lenght of collections doesn\'t match' };

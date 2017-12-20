@@ -53,7 +53,7 @@ const request = (query, callback) => {
  * @param {*The options passed in parameters} setup
  */
 const compute = (coordinates) => {
-  const url = conf.OSRM_URL + conf.OSRM_VERSIONS.drivingRoute + coordinates.join(';') + setParams(options);
+  const url = conf.OSRM_URL + conf.OSRM_VERSIONS.drivingRoute + conf.profile.car + coordinates.join(';') + setParams(options);
   return request(url, undefined);
 };
 
@@ -62,8 +62,11 @@ const compute = (coordinates) => {
  * And OrTools as a solver
  * @param {*Points coordinates used to get durations matrix} coordinates
  */
-const TCPOptim = (coordinates) => {
-  const url = conf.OSRM_URL + conf.OSRM_VERSIONS.matrix + coordinates.join(';');
+const TCPOptim = (coordinates, profile) => {
+  let osrmP = profile;
+  if (!osrmP) { osrmP = 'car' }
+
+  const url = conf.OSRM_URL + conf.OSRM_VERSIONS.matrix + conf.profile[osrmP] + coordinates.join(';');
 
   return request(url, (json) => {
     if (!json.durations) {

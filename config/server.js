@@ -10,8 +10,13 @@ module.exports = {
   OSRM_URL: 'http://router.project-osrm.org/',
   MAPBOX_URL: 'https://api.mapbox.com/',
   OSRM_VERSIONS: {
-    drivingRoute: 'route/v1/driving/',
-    matrix: 'table/v1/driving/'
+    drivingRoute: 'route/v1/',
+    matrix: 'table/v1/'
+  },
+  profile: {
+    car: 'driving/',
+    foot: 'foot/',
+    bike: 'bike/'
   },
   MAPBOX_VERSIONS: {
     matrix: '/directions-matrix/v1/mapbox/driving/'

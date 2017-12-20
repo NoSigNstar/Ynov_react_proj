@@ -9,7 +9,7 @@ class Destination extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { visible: false, desc: null, selected: process.env.optimizerType.TCP.name, modes: props.modes, open: false};
+    this.state = { visible: false, desc: null, selected: process.env.optimizerType.TCP.name, modes: props.modes, open: false, profile: 'car'};
     this.size = props.destinations.length;
   }
 
@@ -45,11 +45,14 @@ class Destination extends Component {
   }
 
   optimize() {
-    store.dispatch(optimizeRoute(this.state.selected));
+    store.dispatch(optimizeRoute({
+      solver: this.state.selected,
+      profile: this.state.profile
+    }));
     this.toggleModal();
   }
 
-  _handleChange(value, element) {
+  _handleChange(value, element, type) {
     if (!element.value || element.value === '') {
       return;
     }
@@ -59,7 +62,7 @@ class Destination extends Component {
     })[0].data;
 
     this.setState({
-      selected: element.value,
+      [type]: element.value.toLowerCase(),
       desc: data
     });
   }
@@ -133,10 +136,12 @@ class Destination extends Component {
                 content={(
                   <Container text style={{marginTop: 15}}>
                     <Header as='h4' className="flex-center" icon='plug' content='Select optimizing type' />
-                    <Select placeholder='Select the Optimize Mode' options={this.state.modes} onChange={(e, element) => this._handleChange(e, element)} />
+                    <Select placeholder='Select the Optimize Mode' options={this.state.modes} onChange={(e, element) => this._handleChange(e, element, 'selected')} />
                     {this.state.desc && (
                       <p>{this.state.desc}</p>
                     )}
+                    <Header as='h4' className="flex-center" icon='settings' content='Select Profile' />
+                    <Select placeholder='Select the Optimize Mode' options={this.props.profiles} onChange={(e, element) => this._handleChange(e, element, 'profile')} />
                   </Container>
                 )}
                 actions={[
@@ -157,7 +162,8 @@ Destination.propTypes = {
   visible: PropTypes.any,
   destinations: PropTypes.array,
   modes: PropTypes.array,
-  flyto: PropTypes.func
+  flyto: PropTypes.func,
+  profiles: PropTypes.array
 };
 
 export default Destination;

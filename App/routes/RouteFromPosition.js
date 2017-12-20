@@ -32,8 +32,9 @@ routes.route('/')
 routes.route('/optimize/tcp')
   .get(function (req, res) {
     const coordinates = req.query.coordinates && req.query.coordinates.split(';');
+    const profile = req.query.profile;
 
-    OSRM.TCPOptim(coordinates).then((response) => {
+    OSRM.TCPOptim(coordinates, profile).then((response) => {
       res.status(200);
       return res.json(response);
     }).catch((error) => {

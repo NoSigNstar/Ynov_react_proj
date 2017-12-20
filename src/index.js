@@ -25,6 +25,16 @@ process.env.optimizerType = {
   VRP: { name: 'VRP', icon: 'time', description: 'VRP is what is the most powerfull, you can ask for time windows to make sur that you will be able to visits all the bar at happy hours' },
   TCP: { name: 'TCP', icon: 'map', description: 'TCP is the basic solver for your barathon, it will take into account only the distance between bars thats you selected' }
 };
+
+/**
+ * Profiles used to calculate the routes
+ */
+process.env.profiles = {
+  car: { name: 'Car', icon: 'car', description: 'Using driving Time/Distance' },
+  foot: { name: 'Foot', icon: 'male', description: 'Using walk Time/Distance' },
+  bike: { name: 'Bike', icon: 'bicycle', description: 'Using bicycle Time/Distance' }
+};
+
 process.env.optimizeURL = 'http://localhost:3080/routes/optimize';
 
 // render the main component
