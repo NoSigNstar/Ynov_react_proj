@@ -50,7 +50,7 @@ class Register extends Component {
             </Header>
             <Segment stacked>
               <Form loading={this.state.loading} size='large'>
-                <Form.Field unstackable widths={1}>
+                <Form.Field widths={1}>
                   <Form.Input
                     icon='user'
                     iconPosition='left'
@@ -60,7 +60,7 @@ class Register extends Component {
                     placeholder='login' />
                 </Form.Field>
 
-                <Form.Group unstackable widths={2}>
+                <Form.Group widths={2}>
                   <Form.Input
                     icon='user'
                     iconPosition='left'

@@ -15,7 +15,7 @@ import Description from './sidebars/Description';
 import Destination from './sidebars/Destination';
 import Geocoder from './Geocoder';
 import { store } from '../../store';
-import { addStartDestination } from '../../actions/destinationActions';
+import { addStartDestination } from '../../actions/map/destinationActions';
 import { getoptimizerTypeArray } from '../../helpers/environment';
 
 class MapIndex extends Component {

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Sidebar, Button, Menu, Icon, Modal, Select, Header, Container, Grid, Popup } from 'semantic-ui-react';
 import { PropTypes } from 'prop-types';
-import { addDestinationRouteAsync, optimizeRoute } from '../../actions/routeActions';
-import { deleteDests } from '../../actions/destinationActions';
-import { store } from '../../store';
+import { addDestinationRouteAsync, optimizeRoute } from '../../../actions/routeActions';
+import { deleteDests } from '../../../actions/map/destinationActions';
+import { store } from '../../../store';
 
 class Destination extends Component {
   constructor(props) {

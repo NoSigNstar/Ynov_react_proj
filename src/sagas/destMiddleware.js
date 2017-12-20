@@ -3,7 +3,7 @@ import { call, put } from 'redux-saga/effects';
 import { store } from '../store';
 import _ from 'lodash';
 import { addDestinationRoute, addDestinationRouteAsync } from '../actions/routeActions';
-import { replaceDestinations } from '../actions/destinationActions';
+import { replaceDestinations } from '../actions/map/destinationActions';
 import { optimizationError } from '../actions/errorsAction';
 import { sortByIndex } from '../helpers/environment';
 
