@@ -99,8 +99,8 @@ class MapIndex extends Component {
               coordinates={[dest.lon, dest.lat]}>
               {
                 dest.type === 'START' ?
-                  (<Icon name='star' color='yellow' size='huge' />) :
-                  (<Icon name='flag' style={{color: '#02547D'}} size='big' />)
+                  (<Icon name='star' color='yellow' size='huge' > {dest.index} </Icon>) :
+                  (<Icon name='flag' style={{color: '#02547D'}} size='big' > {dest.index} </Icon>)
               }
             </Marker>
           );
