@@ -102,7 +102,7 @@ class Geocoder extends React.Component {
           <Button className="close" className="btn-close-modal" icon='close' onClick={() => this.toggleModal()} floated="right" />
 
           <Modal.Header>
-            <Icon name='map' color='white' />
+            <Icon name='map' color='yellow' />
             Research a localisation
             <Input
               icon={{ name: 'search', circular: true, link: true }}
