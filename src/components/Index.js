@@ -133,7 +133,7 @@ class Index extends Component {
             </Grid.Column>
             <Grid.Column mobile={16} tablet={16} computer={10}>
               <Image
-                className="image-presentation"
+                className="img-perspective"
                 src="media/img/perspective.png"
               />
             </Grid.Column>
