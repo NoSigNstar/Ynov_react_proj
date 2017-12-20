@@ -38,6 +38,16 @@ class MapIndex extends Component {
     });
   }
 
+  handleClickOnDestination(coords) {
+    if (!coords) {
+      return;
+    }
+
+    this.setState({
+      coord: coords
+    });
+  }
+
   _handleSelect(value) {
     store.dispatch(addStartDestination({
       name: value.place_name,
@@ -67,7 +77,7 @@ class MapIndex extends Component {
         />
 
         {/* Sidebar used to store Selected Destinations */}
-        <SideBar destinations={this.props.destinations} modes={getoptimizerTypeArray()} notify={this.props.notify} />
+        <SideBar destinations={this.props.destinations} modes={getoptimizerTypeArray()} notify={this.props.notify} flyto={this.handleClickOnDestination.bind(this)} />
 
         {/* Clusters of destination, contains all markers */}
         <Clusters bounds={this.state.mapBounds} destIds={this.props.destinations.map(e => +e.place_id)} />

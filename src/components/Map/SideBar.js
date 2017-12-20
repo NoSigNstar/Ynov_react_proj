@@ -40,7 +40,7 @@ class SideBar extends Component {
         +destination.lat
       ];
 
-      console.log(coords);
+      this.props.flyto(coords);
     }
   }
 
@@ -156,7 +156,8 @@ SideBar.propTypes = {
   notify: PropTypes.object,
   visible: PropTypes.any,
   destinations: PropTypes.array,
-  modes: PropTypes.array
+  modes: PropTypes.array,
+  flyto: PropTypes.func
 };
 
 export default SideBar;
