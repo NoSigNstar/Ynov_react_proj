@@ -5,7 +5,10 @@ module.exports = (sequelize, DataTypes) => {
     first_name: DataTypes.STRING,
     last_name: DataTypes.STRING,
     password: DataTypes.STRING,
-    avatar: DataTypes.STRING,
+    avatar: {
+      type: DataTypes.STRING,
+      defaultValue: 'https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_960_720.png'
+    },
     api_token: DataTypes.STRING,
     login: {
       type: DataTypes.STRING,

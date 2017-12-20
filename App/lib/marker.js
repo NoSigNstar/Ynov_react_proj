@@ -46,9 +46,11 @@ marker.get('/description', (req, res) => {
         json.note = parseFloat(json.note);
       }// CAST(AS FLOAT) IN SQL doesn't work
 
-      if(json.user_note) {
+      if(json.user_note && json.user_note[0]) {
         json.user_note = json.user_note[0].note;
-      } // I don't know how to fix that with sequelize
+      } else {
+        delete (json.user_note);
+      }// I don't know how to fix that with sequelize
 
       json.pictures = json.pictures.map((p) => p.picture);
       res.json(json);
