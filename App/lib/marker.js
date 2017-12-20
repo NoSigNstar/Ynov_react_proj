@@ -61,6 +61,8 @@ marker.get('/description', (req, res) => {
 });
 
 marker.post('/note', (req, res) => {
+  console.log('jarrive bien ici');
+
   const tempSQL = 'SELECT id from NOTE WHERE type=\'' + req.body.type + '\' AND note=' + req.body.note;
 
   ToNote
@@ -72,19 +74,25 @@ marker.post('/note', (req, res) => {
           user_id: req.body.user_id
         }
       }
-    ).then(result =>
-      res.json({ note: req.body.note })
+    ).then(result => {
+      console.log(result);
+      if(!result || result[0] === 0) {
+        ToNote.create({
+          marker_description_id: res.id,
+          user_id: req.body.user_id,
+          note_id: Sequelize.literal('(' + tempSQL + ')')
+        }).then(result => {
+          res.json({ note: req.body.note });
+        }).catch(error => {
+          res.json(new BadRequest());
+        });
+      } else {
+        res.json({ note: req.body.note });
+      }
+    }
     )
     .catch(err =>
-      ToNote.create({
-        marker_description_id: res.id,
-        user_id: req.body.user_id,
-        note_id: Sequelize.literal('(' + tempSQL + ')')
-      }).then(result => {
-        res.json({ note: req.body.note });
-      }).catch(error => {
-        res.json(new BadRequest());
-      })
+      res.json(new BadRequest(err))
     );
 });
 

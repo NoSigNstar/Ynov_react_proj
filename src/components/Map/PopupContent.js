@@ -23,7 +23,7 @@ class PopupContent extends Component {
     store.dispatch(getDescription({
       id: this.props.POI.place_id,
       name: this.props.POI.display_name[0],
-      type: this.props.POI.type,
+      type: this.typeMarkers[this.props.POI.type],
       user_id: this.props.user.id
     }));
 

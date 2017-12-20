@@ -34,11 +34,10 @@ class Description extends Component {
       },
       { menuItem: 'Description', render: () =>
         <Tab.Pane className="categories">
-          Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.
-          Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.
+          { this.props.marker.data.description }
         </Tab.Pane>
       },
-      { menuItem: 'Other', render: () => <Tab.Pane className="categories">Autres informations</Tab.Pane> }
+      { menuItem: 'Other', render: () => <Tab.Pane className="categories">No data collected</Tab.Pane> }
     ];
   }
 
@@ -82,8 +81,8 @@ class Description extends Component {
         >
           <div className="headerSidebar">
             <div>
-              <img src='../../../media/icons/bed.svg'/>
-              <h1>Le Lestonnat</h1>
+              <img src={ !this.props.marker.isLoading && this.props.marker.data.type ? this.props.marker.data.type : '../../../media/icons/bed.svg' } />
+              <h1> { !this.props.marker.isLoading && this.props.marker.data.name ? this.props.marker.data.name : 'loading...' }</h1>
               <Button icon='close' size='small' floated='right' color='blue' onClick={() => this.toggleVisibility()} />
             </div>
           </div>

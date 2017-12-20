@@ -13,7 +13,7 @@ const routes = express.Router();
 
 routes.post('/token', (req, res) => {
   const jhon = User.findOne({
-    attributes: ['id', 'first_name', 'last_name', 'email'],
+    attributes: ['id', 'first_name', 'last_name', 'email', 'avatar'],
     where: { login: req.body.login, password: req.body.password }
   }).then((response) => {
     if (!response) {

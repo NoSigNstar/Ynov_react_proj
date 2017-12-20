@@ -94,9 +94,8 @@ class Chatroom extends Component {
     e.preventDefault();
 
     if (this.state.textarea !== '') {
-      const date = new Date();
       const dataToSend = {
-        date: date.toDateString(),
+        date: new Date().toISOString().slice(0, 19).replace('T', ' '),
         message: this.state.textarea
       };
 

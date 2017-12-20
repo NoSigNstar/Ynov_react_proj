@@ -17,7 +17,7 @@ class Message extends React.Component {
     return (
       <div className={ this.props.isOwner ? 'ui feed ui vertical segment' : '' }>
         <div className="label">
-          <img alt="user-picture" className="ui avatar image" src={ this.state.user.image } />
+          <img alt="user-picture" className="ui avatar image" src={ this.state.user.avatar } />
         </div>
         <div className="content">
           <div className="date">

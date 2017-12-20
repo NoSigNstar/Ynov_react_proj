@@ -20,7 +20,6 @@ exports.listen = function (_server) {
   io.sockets.on('connection', (socket) => {
     io.emit('client_disconnected' /* CLIENT ID WHO MUST BE DISCONNECTED FROM THE ROOM */);
     // to the canal of the room
-    console.log(socket.handshake.query.marker, socket.handshake.query);
     joinRoom(socket, socket.handshake.query.marker);
 
     // Broadcasting message by room
@@ -48,7 +47,6 @@ function parse(socket, boolean, string_info, object = {}) {
 
 function joinRoom(socket, room) {
   Room.findOrCreate({ where: { marker_description_id: room } }).then(result => {
-    console.log(result);
     // obj.getMesssage();
     socket.join(result.id); // Make user join room
 
