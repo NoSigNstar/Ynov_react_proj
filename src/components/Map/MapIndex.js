@@ -39,6 +39,16 @@ class MapIndex extends Component {
     });
   }
 
+  handleClickOnDestination(coords) {
+    if (!coords) {
+      return;
+    }
+
+    this.setState({
+      coord: coords
+    });
+  }
+
   _handleSelect(value) {
     store.dispatch(addStartDestination({
       name: value.place_name,
@@ -64,7 +74,7 @@ class MapIndex extends Component {
         <Geocoder accessToken={process.env.MapboxKey} onSelect={this._handleSelect} showLoader={true} />
 
         {/* Sidebar used to store Selected Destinations */}
-        <Destination destinations={this.props.destinations} modes={getoptimizerTypeArray()} notify={this.props.notify} />
+        <Destination destinations={this.props.destinations} modes={getoptimizerTypeArray()} notify={this.props.notify} flyto={this.handleClickOnDestination.bind(this)} />
 
         <Description user={ this.props.user } marker={this.props.marker } />
 
