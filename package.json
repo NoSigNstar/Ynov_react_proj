@@ -9,7 +9,7 @@
     "starter kit",
     "boilerplate"
   ],
-  "main": "index.js",
+  "main": "App/server.js",
   "homepage": "localhost",
   "repository": {
     "type": "git",
