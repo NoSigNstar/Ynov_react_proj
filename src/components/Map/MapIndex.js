@@ -85,7 +85,7 @@ class MapIndex extends Component {
         {this.props.geoRoutes.routes && (
           <GeoJSONLayer
             data={this.props.geoRoutes.routes[0].geometry}
-            linePaint={{ 'line-color': '#F51332', 'line-width': 4 }}
+            linePaint={{ 'line-color': '#eb520f', 'line-width': 4 }}
             lineLayout={{ 'line-join': 'round', 'line-cap': 'round' }}
             type='lineLayout' />
         )}
@@ -100,7 +100,7 @@ class MapIndex extends Component {
               {
                 dest.type === 'START' ?
                   (<Icon name='star' color='yellow' size='huge' />) :
-                  (<Icon name='bar' color='blue' size='big' />)
+                  (<Icon name='flag' style={{color: '#02547D'}} size='big' />)
               }
             </Marker>
           );
